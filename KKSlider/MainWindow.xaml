@@ -1,0 +1,63 @@
+﻿<Window x:Class="KKSlider.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:KKSlider"
+        xmlns:viewmodels="clr-namespace:KKSlider.ViewModels"
+        xmlns:converters="clr-namespace:KKSlider.Converters"
+        mc:Ignorable="d"
+        ResizeMode="NoResize"
+        Title="KKSlider" Height="265.957" Width="468.903">
+    <Window.DataContext>
+        <viewmodels:AppViewModel/>
+    </Window.DataContext>
+
+    <Window.Background>
+        <ImageBrush ImageSource="Resources/Images/grass.png" ViewportUnits="Absolute" Viewport="0,0,128,128" TileMode="Tile" />
+    </Window.Background>
+
+    <Window.Resources>
+        <converters:BoolInvertConverter x:Key="Invert" />
+    </Window.Resources>
+
+    <Grid>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid Grid.Column="1" Margin="10" HorizontalAlignment="Center" VerticalAlignment="Center">
+
+            <StackPanel>
+
+                <ComboBox ItemsSource="{Binding GameList}" SelectedItem="{Binding SelectedGame}" Grid.Row="0" Grid.Column="0">
+                </ComboBox>
+
+                <StackPanel>
+
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                        <Button Content="{StaticResource PlayImg}" Command="{Binding PlayAudioCommand}" IsEnabled="{Binding IsPlaying, Converter={StaticResource Invert}}" Margin="0, 5, 5, 0" Width="32"/>
+                        <Button Content="{StaticResource StopImg}" Command="{Binding StopAudioCommand}" IsEnabled="{Binding IsPlaying}" Margin="5, 5, 0, 0" Width="32"/>
+                    </StackPanel>
+
+                    <StackPanel>
+
+                        <Slider Value="{Binding Volume, Mode=TwoWay}" Orientation="Horizontal" Maximum="100" Width="230"/>
+                        <Label Content="{Binding Volume, Mode=TwoWay}" ContentStringFormat="Volume: {0}" HorizontalAlignment="Center"/>
+
+                    </StackPanel>
+
+                </StackPanel>
+
+            </StackPanel>
+
+        </Grid>
+
+        <Image Source="Resources/Images/KKSlider.png" VerticalAlignment="Center" Width="200" Height="200" />
+
+        <Label Grid.ColumnSpan="2" HorizontalAlignment="Right" VerticalAlignment="Bottom" Content="Icons by Icons8" FontSize="10"/>
+
+    </Grid>
+</Window>

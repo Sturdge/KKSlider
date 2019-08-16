@@ -1,0 +1,29 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29201.188
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KKSlider", "KKSlider\KKSlider.csproj", "{20CD80AD-D08D-4DAE-B5F0-930DCB102495}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Setup", "Setup\Setup.vdproj", "{C27EA891-1FF4-433B-94FD-863AD136521A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{20CD80AD-D08D-4DAE-B5F0-930DCB102495}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{20CD80AD-D08D-4DAE-B5F0-930DCB102495}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{20CD80AD-D08D-4DAE-B5F0-930DCB102495}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{20CD80AD-D08D-4DAE-B5F0-930DCB102495}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C27EA891-1FF4-433B-94FD-863AD136521A}.Debug|Any CPU.ActiveCfg = Debug
+		{C27EA891-1FF4-433B-94FD-863AD136521A}.Release|Any CPU.ActiveCfg = Release
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E29EAF46-5BE5-40BF-9031-EFEB463E8805}
+	EndGlobalSection
+EndGlobal

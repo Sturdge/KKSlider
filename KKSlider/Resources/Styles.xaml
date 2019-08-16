@@ -1,0 +1,13 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:KKSlider.Resources">
+
+    <Image x:Key="PlayImg" Source="Images/play.png"/>
+    <Image x:Key="StopImg" Source="Images/stop.png"/>
+
+    <Style TargetType="{x:Type Button}" x:Key="ControlBtn">
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="BorderThickness" Value="0"/>
+    </Style>
+    
+</ResourceDictionary>
