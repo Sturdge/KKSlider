@@ -7,8 +7,11 @@
         xmlns:viewmodels="clr-namespace:KKSlider.ViewModels"
         xmlns:converters="clr-namespace:KKSlider.Converters"
         mc:Ignorable="d"
-        ResizeMode="NoResize"
-        Title="KKSlider" Height="265.957" Width="468.903">
+        ResizeMode="CanMinimize"
+        Topmost="True"
+        ShowInTaskbar="{Binding ShowInTaskBar}"
+        Title="KKSlider" Height="265.957" Width="468.903" WindowState="{Binding WindowState}">
+    
     <Window.DataContext>
         <viewmodels:AppViewModel/>
     </Window.DataContext>
@@ -24,8 +27,10 @@
     <Grid>
 
         <Grid.ColumnDefinitions>
+            
             <ColumnDefinition Width="auto"/>
             <ColumnDefinition Width="*"/>
+            
         </Grid.ColumnDefinitions>
 
         <Grid Grid.Column="1" Margin="10" HorizontalAlignment="Center" VerticalAlignment="Center">
@@ -34,15 +39,17 @@
 
                 <ComboBox ItemsSource="{Binding GameList}" SelectedItem="{Binding SelectedGame}" Grid.Row="0" Grid.Column="0" />
 
-                    <StackPanel>
+                <StackPanel>
 
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                        
                         <Button Content="{StaticResource PlayImg}" Command="{Binding PlayAudioCommand}" IsEnabled="{Binding IsPlaying, Converter={StaticResource Invert}}" Margin="0, 5, 5, 0" Width="32"/>
                         <Button Content="{StaticResource StopImg}" Command="{Binding StopAudioCommand}" IsEnabled="{Binding IsPlaying}" Margin="5, 5, 0, 0" Width="32"/>
+                        
                     </StackPanel>
 
                     <StackPanel>
-
+                        
                         <Slider Value="{Binding Volume, Mode=TwoWay}" Orientation="Horizontal" Maximum="100" Width="230"/>
                         <Label Content="{Binding Volume, Mode=TwoWay}" ContentStringFormat="Volume: {0}" HorizontalAlignment="Center"/>
 
@@ -59,4 +66,5 @@
         <Label Grid.ColumnSpan="2" HorizontalAlignment="Right" VerticalAlignment="Bottom" Content="Icons by Icons8" FontSize="10"/>
 
     </Grid>
+    
 </Window>

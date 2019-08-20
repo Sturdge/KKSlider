@@ -93,3 +93,4 @@ C:\Users\Sturd\source\repos\KKSlider\KKSlider\bin\Debug\KKSlider.exe.manifest
 C:\Users\Sturd\source\repos\KKSlider\KKSlider\bin\Debug\KKSlider.application
 C:\Users\Sturd\source\repos\KKSlider\KKSlider\obj\Debug\KKSlider.exe.manifest
 C:\Users\Sturd\source\repos\KKSlider\KKSlider\obj\Debug\KKSlider.application
+C:\Users\Sturd\source\repos\KKSlider\KKSlider\bin\Debug\Resources\Images\icon.ico

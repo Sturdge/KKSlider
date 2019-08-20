@@ -75,7 +75,7 @@ namespace KKSlider.ViewModels
         /// </summary>
         private string _selectedGame;
         /// <summary>
-        /// Gets the value of <see cref="_selectedGame"/> and calls the <see cref="SwitchGame()"/> method
+        /// Gets the value of <see cref="_selectedGame"/>, calls the <see cref="SwitchGame()"/> method and sets the value of <see cref="IsPlaying"/> to <see cref="AudioHandler"/>'s IsPlaying Property
         /// </summary>
         public string SelectedGame
         {
@@ -88,6 +88,49 @@ namespace KKSlider.ViewModels
                 OnPropertyChanged(nameof(SelectedGame));
                 game.SwitchGame(SelectedGame, GameList, audio);
                 IsPlaying = audio.IsPlaying;
+
+            }
+
+        }
+
+        /// <summary>
+        /// Backing field for the ShowInTaskBar Property
+        /// </summary>
+        private bool _showInTaskbar = true;
+        /// <summary>
+        /// Gets the value of <see cref="_showInTaskbar"/>
+        /// </summary>
+        public bool ShowInTaskBar
+        {
+
+            get { return _showInTaskbar; }
+            set
+            {
+
+                _showInTaskbar = value;
+                OnPropertyChanged(nameof(ShowInTaskBar));
+
+            }
+
+        }
+
+        /// <summary>
+        /// Backing field for the WindowState Property
+        /// </summary>
+        private string _windowState = "Normal";
+        /// <summary>
+        /// Gets the value of <see cref="_windowState"/> and calls the <see cref="SetTaskBar"/> Method
+        /// </summary>
+        public string WindowState
+        {
+
+            get { return _windowState; }
+            set
+            {
+
+                _windowState = value;
+                OnPropertyChanged(nameof(WindowState));
+                SetTaskBar();
 
             }
 
@@ -108,6 +151,7 @@ namespace KKSlider.ViewModels
         /// TimerHandler object
         /// </summary>
         private readonly TimerHandler timer = new TimerHandler();
+        private readonly NotifyHandler notify = new NotifyHandler();
         /// <summary>
         /// Observable collection to fill Combobox
         /// </summary>
@@ -125,7 +169,8 @@ namespace KKSlider.ViewModels
             SelectedGame = GameList[(int)game.CurrentGame];
 
             audio.Init(game.CurrentGame);
-            timer.InitTimer(game, audio);
+            timer.Init(game, audio);
+            notify.Init(this);
 
             PlayAudioCommand = new RelayCommand(PlayAudio);
             StopAudioCommand = new RelayCommand(StopAudio);
@@ -165,6 +210,19 @@ namespace KKSlider.ViewModels
             
             audio.StopAudio();
             IsPlaying = audio.IsPlaying;
+
+        }
+
+        /// <summary>
+        /// Method to control if the window is visible in the Task Bar
+        /// </summary>
+        private void SetTaskBar()
+        {
+
+            if (WindowState == "Normal")
+                ShowInTaskBar = true;
+            else if (WindowState == "Minimized")
+                ShowInTaskBar = false;
 
         }
 

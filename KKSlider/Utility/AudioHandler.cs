@@ -33,7 +33,7 @@ namespace KKSlider.Utility
 
         #region Public Methods
         /// <summary>
-        /// Initialisation Method
+        /// Constructor
         /// <example><code>Init(Game.WildWorld)</code></example>
         /// </summary>
         /// <param name="game">Game enumeration</param>

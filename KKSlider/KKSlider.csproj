@@ -96,6 +96,7 @@
     <Compile Include="Models\Enums.cs" />
     <Compile Include="Utility\AudioHandler.cs" />
     <Compile Include="Utility\GameHandler.cs" />
+    <Compile Include="Utility\NotifyHandler.cs" />
     <Compile Include="Utility\ObservableObject.cs" />
     <Compile Include="Utility\RelayCommand.cs" />
     <Compile Include="Utility\TimerHandler.cs" />
@@ -145,6 +146,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Resources\Images\icon.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Resources\Music\0\0000.mp3">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

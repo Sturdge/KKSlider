@@ -31,7 +31,7 @@ namespace KKSlider.Utility
         /// <summary>
         /// Initialisation method
         /// </summary>
-        public void InitTimer(GameHandler g, AudioHandler a)
+        public void Init(GameHandler g, AudioHandler a)
         {
 
             game = g;
