@@ -12,67 +12,79 @@ using KKSlider.Models;
 namespace KKSlider.Utility
 {
     /// <summary>
-    /// Static Audio Handler Class
+    ///  Audio Handler Class
     /// </summary>
-    public static class AudioHandler
+    public class AudioHandler
     {
 
-        #region Fields
-        private static readonly MediaPlayer media = new MediaPlayer();
+        #region Properties
+        /// <summary>
+        /// Property to determine if the audio is playing
+        /// </summary>
+        public bool IsPlaying { get; private set; }
+        #endregion
 
-        private static Game currentGame;
+        #region Fields
+        /// <summary>
+        /// MediaPlayer object
+        /// </summary>
+        private readonly MediaPlayer media = new MediaPlayer();
         #endregion
 
         #region Public Methods
         /// <summary>
-        /// Initialisation method
+        /// Initialisation Method
         /// <example><code>Init(Game.WildWorld)</code></example>
         /// </summary>
         /// <param name="game">Game enumeration</param>
-        public static void Init(Game game)
+        public void Init(Game game)
         {
 
-            currentGame = game;
             media.MediaEnded += new EventHandler(Media_Ended);
-            LoadCurrentTimeSong();
+            LoadCurrentTimeSong(game);
+            media.Volume = 1;
 
         }
 
         /// <summary>
         /// Method to load song based on current hour
         /// </summary>
-        public static void LoadCurrentTimeSong()
+        public void LoadCurrentTimeSong(Game game)
         {
 
-            string current = currentGame.ToString("D");
+            IsPlaying = true;
+
             string hour = DateTime.Now.Hour < 10 ? $"0{DateTime.Now.Hour.ToString()}00" : $"{DateTime.Now.Hour.ToString()}00";
-            string path = $"Resources\\Music\\{current}\\{hour}.mp3";
+            string path = $"Resources\\Music\\{game.ToString("D")}\\{hour}.mp3";
 
             System.Windows.Application.Current.Dispatcher.BeginInvoke(new Action(() =>
             {
 
                 media.Open(new Uri(path, UriKind.Relative));
-                PlayAudio();
+                media.Play();
 
             }));
 
         }
-        
+
         /// <summary>
         /// Method to set the audio volume
         /// </summary>
         /// <param name="v">The value of the volume</param>
-        public static void SetVolume(int v) => media.Volume = v / 100.0f;
+        public void SetVolume(int v) => media.Volume = v / 100.0f;
 
         /// <summary>
         /// Method to stop audio
         /// </summary>
-        public static void StopAudio() => media.Stop();
+        public void StopAudio()
+        {
 
-        /// <summary>
-        /// Method to play audio
-        /// </summary>
-        public static void PlayAudio() => media.Play();
+            media.Stop();
+
+            IsPlaying = false;
+
+        }
+
         #endregion
 
         #region Private Methods
@@ -81,7 +93,7 @@ namespace KKSlider.Utility
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private static void Media_Ended(object sender, EventArgs e)
+        private void Media_Ended(object sender, EventArgs e)
         {
 
             media.Position = TimeSpan.Zero;

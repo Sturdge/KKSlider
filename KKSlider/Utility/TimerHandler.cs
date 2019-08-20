@@ -8,32 +8,37 @@ using System.Windows.Media;
 namespace KKSlider.Utility
 {
     /// <summary>
-    /// Static Timer Handler Class
+    /// Timer Handler Class
     /// </summary>
-    public static class TimerHandler
+    public class TimerHandler
     {
-
         #region Fields
         /// <summary>
-        /// Timer field
+        /// Timer object
         /// </summary>
-        private static readonly Timer timer = new Timer()
-        {
-
-            Interval = TimeAdjust() * 60 * 1000,
-            AutoReset = true,
-            Enabled = true
-
-        };
+        private readonly Timer timer = new Timer();
+        /// <summary>
+        /// GameHandler object
+        /// </summary>
+        private GameHandler game;
+        /// <summary>
+        /// AudioHandler object
+        /// </summary>
+        private AudioHandler audio;
         #endregion
 
         #region Public Methods
         /// <summary>
         /// Initialisation method
         /// </summary>
-        public static void InitTimer()
+        public void InitTimer(GameHandler g, AudioHandler a)
         {
 
+            game = g;
+            audio = a;
+            timer.Interval = TimeAdjust() * 60 * 1000;
+            timer.AutoReset = true;
+            timer.Enabled = true;
             timer.Elapsed += OnTimedEvent;
 
         }
@@ -44,7 +49,7 @@ namespace KKSlider.Utility
         /// Method to Adjust the Timer Interval based on the current minute
         /// </summary>
         /// <returns><see cref="TimeAdjust"/></returns>
-        private static int TimeAdjust()
+        private int TimeAdjust()
         {
 
             int minute = DateTime.Now.Minute;
@@ -59,7 +64,7 @@ namespace KKSlider.Utility
         /// </summary>
         /// <param name="source"></param>
         /// <param name="e"></param>
-        private static void OnTimedEvent(Object source, ElapsedEventArgs e) => AudioHandler.LoadCurrentTimeSong();
+        private void OnTimedEvent(Object source, ElapsedEventArgs e) => audio.LoadCurrentTimeSong(game.CurrentGame);
         #endregion
 
     }

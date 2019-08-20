@@ -32,10 +32,9 @@
 
             <StackPanel>
 
-                <ComboBox ItemsSource="{Binding GameList}" SelectedItem="{Binding SelectedGame}" Grid.Row="0" Grid.Column="0">
-                </ComboBox>
+                <ComboBox ItemsSource="{Binding GameList}" SelectedItem="{Binding SelectedGame}" Grid.Row="0" Grid.Column="0" />
 
-                <StackPanel>
+                    <StackPanel>
 
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                         <Button Content="{StaticResource PlayImg}" Command="{Binding PlayAudioCommand}" IsEnabled="{Binding IsPlaying, Converter={StaticResource Invert}}" Margin="0, 5, 5, 0" Width="32"/>

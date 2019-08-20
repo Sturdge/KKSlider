@@ -44,7 +44,7 @@ namespace KKSlider.ViewModels
 
                 _volume = value;
                 OnPropertyChanged(nameof(Volume));
-                AudioHandler.SetVolume(value);
+                audio.SetVolume(value);
 
             }
         }
@@ -71,11 +71,6 @@ namespace KKSlider.ViewModels
         }
 
         /// <summary>
-        /// Observable collection to fill Combobox
-        /// </summary>
-        public ObservableCollection<string> GameList { get; private set; } = new ObservableCollection<string>();
-
-        /// <summary>
         /// Backing field for the SelectedGame Property
         /// </summary>
         private string _selectedGame;
@@ -91,12 +86,32 @@ namespace KKSlider.ViewModels
 
                 _selectedGame = value;
                 OnPropertyChanged(nameof(SelectedGame));
-                SwitchGame();
+                game.SwitchGame(SelectedGame, GameList, audio);
+                IsPlaying = audio.IsPlaying;
 
             }
 
         }
 
+        #endregion
+
+        #region Fields
+        /// <summary>
+        /// AudioHandler object
+        /// </summary>
+        private readonly AudioHandler audio = new AudioHandler();
+        /// <summary>
+        /// GameHandler object
+        /// </summary>
+        private readonly GameHandler game = new GameHandler();
+        /// <summary>
+        /// TimerHandler object
+        /// </summary>
+        private readonly TimerHandler timer = new TimerHandler();
+        /// <summary>
+        /// Observable collection to fill Combobox
+        /// </summary>
+        public ObservableCollection<string> GameList { get; private set; } = new ObservableCollection<string>();
         #endregion
 
         #region Constructor
@@ -106,11 +121,11 @@ namespace KKSlider.ViewModels
         public AppViewModel()
         {
 
-            AudioHandler.Init(Game.WildWorld);
-            TimerHandler.InitTimer();
-
             PopulateComboBox();
-            SelectedGame = GameList[1];
+            SelectedGame = GameList[(int)game.CurrentGame];
+
+            audio.Init(game.CurrentGame);
+            timer.InitTimer(game, audio);
 
             PlayAudioCommand = new RelayCommand(PlayAudio);
             StopAudioCommand = new RelayCommand(StopAudio);
@@ -137,8 +152,8 @@ namespace KKSlider.ViewModels
         private void PlayAudio()
         {
 
-            IsPlaying = true;
-            AudioHandler.LoadCurrentTimeSong();
+            audio.LoadCurrentTimeSong(game.CurrentGame);
+            IsPlaying = audio.IsPlaying;
 
         }
 
@@ -147,28 +162,12 @@ namespace KKSlider.ViewModels
         /// </summary>
         private void StopAudio()
         {
-
-            IsPlaying = false;
-            AudioHandler.StopAudio();
-
-        }
-
-        /// <summary>
-        /// Method for switching the selected game
-        /// </summary>
-        private void SwitchGame()
-        {
-
-            if (SelectedGame == GameList[0])
-                AudioHandler.Init(Game.AnimalCrossing);
-            else if (SelectedGame == GameList[1])
-                AudioHandler.Init(Game.WildWorld);
-            else if (SelectedGame == GameList[2])
-                AudioHandler.Init(Game.NewLeaf);
-
-            IsPlaying = true;
+            
+            audio.StopAudio();
+            IsPlaying = audio.IsPlaying;
 
         }
+
         #endregion
 
     }
