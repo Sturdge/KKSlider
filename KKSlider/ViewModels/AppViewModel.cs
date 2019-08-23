@@ -1,4 +1,5 @@
-﻿using KKSlider.Models;
+﻿using KKSlider.Interfaces;
+using KKSlider.Models;
 using KKSlider.Utility;
 using System;
 using System.Collections.Generic;
@@ -14,7 +15,7 @@ namespace KKSlider.ViewModels
     /// <summary>
     /// The View Model for the application
     /// </summary>
-    public class AppViewModel : ObservableObject
+    public class AppViewModel : ObservableObject, IWindowStateChange
     {
 
         #region Commands
@@ -224,6 +225,14 @@ namespace KKSlider.ViewModels
             else if (WindowState == "Minimized")
                 ShowInTaskBar = false;
 
+        }
+
+        /// <summary>
+        /// Method for changing the window state. Implemented via <see cref="IWindowStateChange"/>
+        /// </summary>
+        public void ChangeWindowState()
+        {
+            WindowState = "Normal";
         }
 
         #endregion

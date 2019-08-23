@@ -93,6 +93,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Converters\BoolInvertConverter.cs" />
+    <Compile Include="Interfaces\IWindowStateChange.cs" />
     <Compile Include="Models\Enums.cs" />
     <Compile Include="Utility\AudioHandler.cs" />
     <Compile Include="Utility\GameHandler.cs" />

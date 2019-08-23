@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Drawing;
 using KKSlider.ViewModels;
+using KKSlider.Interfaces;
 
 namespace KKSlider.Utility
 {
@@ -18,9 +19,15 @@ namespace KKSlider.Utility
         // TODO - Implement this better
 
         #region Fields
+        /// <summary>
+        /// NotifyIcon object
+        /// </summary>
         private readonly NotifyIcon notify = new NotifyIcon();
 
-        private AppViewModel main;
+        /// <summary>
+        /// Calling form
+        /// </summary>
+        private IWindowStateChange caller;
         #endregion
 
         #region Public Methods
@@ -28,28 +35,28 @@ namespace KKSlider.Utility
         /// Initialisation Method
         /// </summary>
         /// <param name="avm"></param>
-        public void Init(AppViewModel avm)
+        public void Init(IWindowStateChange c)
         {
 
             notify.Icon = new Icon(@"Resources\Images\icon.ico");
             notify.Click += new EventHandler(ChangeWindowState);
             notify.Visible = true;
 
-            main = avm;
+            caller = c;
 
         }
         #endregion
 
         #region Private Methods
         /// <summary>
-        /// Method to set the Window State of the form back to "Normal" when the click event is called
+        /// Method to call the ChangeWindowState method on the <see cref="caller"/> object
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void ChangeWindowState(Object sender, EventArgs e)
         {
 
-            main.WindowState = "Normal";            
+            caller.ChangeWindowState();
 
         }
         #endregion
