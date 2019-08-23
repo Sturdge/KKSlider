@@ -19,6 +19,7 @@ namespace KKSlider.ViewModels
     {
 
         #region Commands
+
         /// <summary>
         /// Stop Audio Command
         /// </summary>
@@ -27,9 +28,11 @@ namespace KKSlider.ViewModels
         /// Play Audio Command
         /// </summary>
         public ICommand PlayAudioCommand { get; }
+
         #endregion
 
         #region Properties
+
         /// <summary>
         /// Backing field for Volume Property
         /// </summary>
@@ -140,6 +143,7 @@ namespace KKSlider.ViewModels
         #endregion
 
         #region Fields
+
         /// <summary>
         /// AudioHandler object
         /// </summary>
@@ -152,14 +156,19 @@ namespace KKSlider.ViewModels
         /// TimerHandler object
         /// </summary>
         private readonly TimerHandler timer = new TimerHandler();
+        /// <summary>
+        /// NotifyHandler object
+        /// </summary>
         private readonly NotifyHandler notify = new NotifyHandler();
         /// <summary>
         /// Observable collection to fill Combobox
         /// </summary>
         public ObservableCollection<string> GameList { get; private set; } = new ObservableCollection<string>();
+
         #endregion
 
         #region Constructor
+
         /// <summary>
         /// Constructor for the application
         /// </summary>
@@ -170,16 +179,18 @@ namespace KKSlider.ViewModels
             SelectedGame = GameList[(int)game.CurrentGame];
 
             audio.Init(game.CurrentGame);
-            timer.Init(game, audio);
+            timer.Init(audio, game);
             notify.Init(this);
 
             PlayAudioCommand = new RelayCommand(PlayAudio);
             StopAudioCommand = new RelayCommand(StopAudio);
 
         }
+
         #endregion
 
         #region Private Methods
+
         /// <summary>
         /// Populate the Combobox with Strings
         /// </summary>

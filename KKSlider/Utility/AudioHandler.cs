@@ -4,7 +4,6 @@ using System.IO;
 using System.Linq;
 using System.Media;
 using System.Text;
-using System.Timers;
 using System.Windows;
 using System.Windows.Media;
 using KKSlider.Models;
@@ -18,20 +17,25 @@ namespace KKSlider.Utility
     {
 
         #region Properties
+
         /// <summary>
         /// Property to determine if the audio is playing
         /// </summary>
         public bool IsPlaying { get; private set; }
+
         #endregion
 
         #region Fields
+
         /// <summary>
         /// MediaPlayer object
         /// </summary>
         private readonly MediaPlayer media = new MediaPlayer();
+
         #endregion
 
         #region Public Methods
+
         /// <summary>
         /// Constructor
         /// <example><code>Init(Game.WildWorld)</code></example>
@@ -88,6 +92,7 @@ namespace KKSlider.Utility
         #endregion
 
         #region Private Methods
+
         /// <summary>
         /// EventHandler for MediaEnded. Sets the <see cref="media"/> position back to the start and plays again
         /// </summary>
@@ -100,6 +105,7 @@ namespace KKSlider.Utility
             media.Play();
 
         }
+
         #endregion
 
     }

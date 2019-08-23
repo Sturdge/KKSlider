@@ -13,38 +13,33 @@ namespace KKSlider.Utility
     public class TimerHandler
     {
         #region Fields
+
         /// <summary>
         /// Timer object
         /// </summary>
         private readonly Timer timer = new Timer();
-        /// <summary>
-        /// GameHandler object
-        /// </summary>
-        private GameHandler game;
-        /// <summary>
-        /// AudioHandler object
-        /// </summary>
-        private AudioHandler audio;
+
         #endregion
 
         #region Public Methods
+
         /// <summary>
         /// Initialisation method
         /// </summary>
-        public void Init(GameHandler g, AudioHandler a)
+        public void Init(AudioHandler audio, GameHandler game)
         {
 
-            game = g;
-            audio = a;
             timer.Interval = TimeAdjust() * 60 * 1000;
             timer.AutoReset = true;
             timer.Enabled = true;
-            timer.Elapsed += OnTimedEvent;
+            timer.Elapsed += delegate (object source, ElapsedEventArgs e) { OnTimedEvent(source, e, audio, game); };
 
         }
+
         #endregion
 
         #region Private Methods
+
         /// <summary>
         /// Method to Adjust the Timer Interval based on the current minute
         /// </summary>
@@ -64,7 +59,8 @@ namespace KKSlider.Utility
         /// </summary>
         /// <param name="source"></param>
         /// <param name="e"></param>
-        private void OnTimedEvent(Object source, ElapsedEventArgs e) => audio.LoadCurrentTimeSong(game.CurrentGame);
+        private void OnTimedEvent(Object source, ElapsedEventArgs e, AudioHandler audio, GameHandler game) => audio.LoadCurrentTimeSong(game.CurrentGame);
+
         #endregion
 
     }
