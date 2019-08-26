@@ -12,22 +12,9 @@ namespace KKSlider.Utility
     {
 
         /// <summary>
-        /// Backing field for the CurrentGame Property
+        /// Autoprop for the Current Game
         /// </summary>
-        private Game _currentGame;
-        /// <summary>
-        /// Gets the value of <see cref=_currentGame"/>
-        /// </summary>
-        public Game CurrentGame
-        {
-
-            get { return _currentGame; }
-            private set
-            {
-                _currentGame = value;
-            }
-
-        }
+        public Game CurrentGame { get; private set; }
 
         /// <summary>
         /// Method for switching the selected game

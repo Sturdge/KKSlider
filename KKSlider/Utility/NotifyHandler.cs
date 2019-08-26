@@ -31,12 +31,27 @@ namespace KKSlider.Utility
         /// Initialisation Method
         /// </summary>
         /// <param name="avm"></param>
-        public void Init(IWindowStateChange caller)
+        public void Init(IWindowStateChange caller, ContextMenu context)
         {
 
             notify.Icon = new Icon(@"Resources\Images\icon.ico");
-            notify.Click += delegate (Object sender, EventArgs e) { ChangeWindowState(sender, e, caller); };
+            notify.MouseClick += delegate (Object sender, MouseEventArgs e) { IconClicked(sender, e, caller); };
             notify.Visible = true;
+            notify.ContextMenu = context;
+
+        }
+
+        #endregion
+
+        #region Public Methods
+
+        /// <summary>
+        /// Method to inform the user that the app has minimized to the system tray
+        /// </summary>
+        public void DisplayNotification()
+        {
+
+            notify.ShowBalloonTip(100, "KK Slider is still running in the background.", "To re-open KK Slider, click the tray icon. To close KK Slider, right-click the tray icon.", ToolTipIcon.Info);
 
         }
 
@@ -49,10 +64,11 @@ namespace KKSlider.Utility
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void ChangeWindowState(Object sender, EventArgs e, IWindowStateChange caller)
+        private void IconClicked(Object sender, MouseEventArgs e, IWindowStateChange caller)
         {
 
-            caller.ChangeWindowState();
+            if (e.Button == MouseButtons.Left)
+                caller.ChangeWindowState();
 
         }
 

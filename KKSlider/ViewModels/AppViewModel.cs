@@ -7,6 +7,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Windows;
+using System.Windows.Forms;
 using System.Windows.Input;
 using System.Windows.Media;
 
@@ -161,6 +162,10 @@ namespace KKSlider.ViewModels
         /// </summary>
         private readonly NotifyHandler notify = new NotifyHandler();
         /// <summary>
+        /// Context Menu to pass into <see cref="NotifyHandler"/>
+        /// </summary>
+        private readonly ContextMenu context = new ContextMenu();
+        /// <summary>
         /// Observable collection to fill Combobox
         /// </summary>
         public ObservableCollection<string> GameList { get; private set; } = new ObservableCollection<string>();
@@ -175,12 +180,13 @@ namespace KKSlider.ViewModels
         public AppViewModel()
         {
 
+            PopulateContext();
             PopulateComboBox();
             SelectedGame = GameList[(int)game.CurrentGame];
 
             audio.Init(game.CurrentGame);
             timer.Init(audio, game);
-            notify.Init(this);
+            notify.Init(this, context);
 
             PlayAudioCommand = new RelayCommand(PlayAudio);
             StopAudioCommand = new RelayCommand(StopAudio);
@@ -190,6 +196,17 @@ namespace KKSlider.ViewModels
         #endregion
 
         #region Private Methods
+
+        /// <summary>
+        /// Populate the Context Menu with Buttons
+        /// </summary>
+        private void PopulateContext()
+        {
+
+            context.MenuItems.Add("Show", new EventHandler(ShowClicked));
+            context.MenuItems.Add("Close", new EventHandler(CloseClicked));
+
+        }
 
         /// <summary>
         /// Populate the Combobox with Strings
@@ -234,9 +251,44 @@ namespace KKSlider.ViewModels
             if (WindowState == "Normal")
                 ShowInTaskBar = true;
             else if (WindowState == "Minimized")
+            {
                 ShowInTaskBar = false;
+                notify.DisplayNotification();
+            }
+        }
+
+        #endregion
+
+        #region Events
+
+        /// <summary>
+        /// Event for when the "Show" option on the Context Menu is clicked
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ShowClicked(object sender, EventArgs e)
+        {
+
+            if (WindowState == "Minimized")
+                WindowState = "Normal";
 
         }
+
+        /// <summary>
+        /// Event for when the "Close" option on the Context Menu is clicked
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void CloseClicked(object sender, EventArgs e)
+        {
+
+            Environment.Exit(0);
+
+        }
+
+        #endregion
+
+        #region Interface Implementation
 
         /// <summary>
         /// Method for changing the window state. Implemented via <see cref="IWindowStateChange"/>

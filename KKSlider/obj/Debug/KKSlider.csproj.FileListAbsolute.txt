@@ -1,4 +1,3 @@
-C:\Users\Sturd\source\repos\KKSlider\KKSlider\obj\Debug\KKSlider.csprojAssemblyReference.cache
 C:\Users\Sturd\source\repos\KKSlider\KKSlider\obj\Debug\App.g.cs
 C:\Users\Sturd\source\repos\KKSlider\KKSlider\obj\Debug\KKSlider_Content.g.cs
 C:\Users\Sturd\source\repos\KKSlider\KKSlider\obj\Debug\KKSlider_MarkupCompile.cache

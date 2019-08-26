@@ -43,14 +43,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="KKSlider.exe" size="258528">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="KKSlider.exe" size="258016">
       <assemblyIdentity name="KKSlider" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>01DcZDUnXjeNHD1TYRJPjO+PTXFjIOs46k9PE4/FIqk=</dsig:DigestValue>
+        <dsig:DigestValue>N8CCacUy6glY8DlJ2LOuLxv1qCEhn9q8RdKiU0nLlLc=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

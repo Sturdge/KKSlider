@@ -43,14 +43,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="KKSlider.exe" size="272352">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="KKSlider.exe" size="258016">
       <assemblyIdentity name="KKSlider" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>pnX/Ct0NfeHtz736SP0us2oRhXQneBSQiUxBRPOlanU=</dsig:DigestValue>
+        <dsig:DigestValue>arkNtQcbg0c8ITLwGmUvSqo0EL9N4KNXTpTjWVWuzvQ=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -70,6 +70,15 @@
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
       <dsig:DigestValue>R+Wg8QGvQVHX8T0ta/qbhH1bXkqY0fRnS3wBV3J0bN8=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Resources\Images\icon.ico" size="15086">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>qxRHUz4+lyNqpYCxwHTIKRPQb+sbDMonKT7VlIivz80=</dsig:DigestValue>
     </hash>
   </file>
   <file name="Resources\Music\0\0000.mp3" size="6001554">

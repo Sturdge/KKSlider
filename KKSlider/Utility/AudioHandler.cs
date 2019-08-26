@@ -5,7 +5,9 @@ using System.Linq;
 using System.Media;
 using System.Text;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
 using KKSlider.Models;
 
 namespace KKSlider.Utility
@@ -64,6 +66,7 @@ namespace KKSlider.Utility
             System.Windows.Application.Current.Dispatcher.BeginInvoke(new Action(() =>
             {
 
+                // TODO - Implement crossfade
                 media.Open(new Uri(path, UriKind.Relative));
                 media.Play();
 

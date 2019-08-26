@@ -75,7 +75,6 @@ C:\Users\Sturd\source\repos\KKSlider\KKSlider\bin\Release\KKSlider.exe.manifest
 C:\Users\Sturd\source\repos\KKSlider\KKSlider\bin\Release\KKSlider.application
 C:\Users\Sturd\source\repos\KKSlider\KKSlider\bin\Release\KKSlider.exe
 C:\Users\Sturd\source\repos\KKSlider\KKSlider\bin\Release\KKSlider.pdb
-C:\Users\Sturd\source\repos\KKSlider\KKSlider\obj\Release\KKSlider.csprojAssemblyReference.cache
 C:\Users\Sturd\source\repos\KKSlider\KKSlider\obj\Release\MainWindow.g.cs
 C:\Users\Sturd\source\repos\KKSlider\KKSlider\obj\Release\App.g.cs
 C:\Users\Sturd\source\repos\KKSlider\KKSlider\obj\Release\KKSlider_Content.g.cs
@@ -93,3 +92,5 @@ C:\Users\Sturd\source\repos\KKSlider\KKSlider\obj\Release\KKSlider.exe.manifest
 C:\Users\Sturd\source\repos\KKSlider\KKSlider\obj\Release\KKSlider.application
 C:\Users\Sturd\source\repos\KKSlider\KKSlider\obj\Release\KKSlider.exe
 C:\Users\Sturd\source\repos\KKSlider\KKSlider\obj\Release\KKSlider.pdb
+C:\Users\Sturd\source\repos\KKSlider\KKSlider\bin\Release\Resources\Images\icon.ico
+C:\Users\Sturd\source\repos\KKSlider\KKSlider\obj\Release\KKSlider.csprojAssemblyReference.cache
